@@ -1,0 +1,22 @@
+class Solution {             //seen from solutions https://leetcode.com/problems/rotate-function/solutions/3506925/solution-in-c
+
+public:
+    int maxRotateFunction(vector<int>& nums)
+    {
+        int ans=INT_MIN;
+        int n=nums.size();
+        int sum=0;
+        int s=0;
+        for (int i=0;i<n;i++)
+        {
+            sum+=nums[i];
+            s+=nums[i]*i;
+        }
+        for (int i=n-1;i>=0;i--)
+        {
+           s=s-(nums[i]*(n-1))+(sum-nums[i]);
+           ans=max(ans,s);
+        }
+        return ans;
+    }
+};
